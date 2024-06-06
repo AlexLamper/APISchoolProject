@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestionaryX - Trivia Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+    <!-- Title and Subtitle -->
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h1 class="text-4xl font-bold">QuestionaryX</h1>
+            <h2 class="text-xl text-gray-500">Trivia Questions</h2>
+        </div>
+        <a href="/categories" class="text-blue-500 hover:underline">Category</a>
+    </div>
+
+    <!-- Questions Section -->
+    <div class="grid grid-cols-3 gap-8" id="questions-container">
+        <!-- Questions will be inserted here dynamically -->
+    </div>
+
+    <!-- Script tag with the correct path to main.js -->
+    <script src="../assets/js/main.js" type="module"></script>
+
+</body>
+</html>

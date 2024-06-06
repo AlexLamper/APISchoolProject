@@ -10,9 +10,24 @@ const fetchData = async (url) => {
         const data = await response.json();
         return { data };
     } catch (error) {
-        console.error(`Unfortunately this ${error} occured`);
+        console.error(`Unfortunately this ${error} occurred`);
     }
 };
+
+/**
+ * Function to fetch trivia questions from the API
+ */
+async function fetchTriviaQuestions() {
+    try {
+        // Dynamically import the API module
+        const { getTriviaQuestions } = await import('../js/api.js'); // Adjust the path
+        const response = await fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean');
+        const data = await response.json();
+        updateDOM(data.results);
+    } catch (error) {
+        console.error('Failed to fetch trivia questions:', error);
+    }
+}
 
 /**
    * Fetches a single item from the API
