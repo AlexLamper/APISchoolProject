@@ -3,12 +3,11 @@
  * @param url - The URL to fetch data from
  * @returns Promise | error
  */
-
 const fetchData = async (url) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        return { data };
+        return data;
     } catch (error) {
         console.error(`Unfortunately this ${error} occurred`);
     }
@@ -28,6 +27,22 @@ async function fetchTriviaQuestions() {
         console.error('Failed to fetch trivia questions:', error);
     }
 }
+
+/**
+ * Function to fetch trivia categories from the API
+ */
+const fetchTriviaCategories = async () => {
+    try {
+        const response = await fetch('https://opentdb.com/api_category.php');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch trivia categories:', error);
+    }
+};
 
 /**
    * Fetches a single item from the API
@@ -62,4 +77,4 @@ const getListBasedOnPaginationPage = async (entitySlug, pageNumber, apiRoot) => 
     // create your own pagination logic here
 };
 
-export { getOne, getList, getListBasedOnPaginationPage };
+export { fetchData, fetchTriviaCategories };
