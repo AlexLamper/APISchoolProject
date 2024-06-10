@@ -20,9 +20,23 @@
 
     <!-- Questions Section -->
     <div class="grid grid-cols-3 gap-8" id="questions-container">
-        <!-- Questions get inserted here dynamically -->
+        <!-- Questions will be inserted here dynamically -->
     </div>
 
     <script src="../assets/js/main.js" type="module"></script>
+
+    <!-- Script to handle question card clicks -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const questionLinks = document.querySelectorAll('.question-link');
+            questionLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default behavior of anchor tag
+                    const questionId = link.dataset.questionId;
+                    window.location.href = `/src/question.html?id=${questionId}`;
+                });
+            });
+        });
+    </script>
 </body>
 </html>

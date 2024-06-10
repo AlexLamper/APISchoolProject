@@ -12,6 +12,22 @@ function decodeHTMLEntities(html) {
 }
 
 /**
+ * Function to generate a unique question ID based on question properties
+ * @param {object} question - Trivia question object
+ * @returns {string} - Unique question ID
+ */
+function generateQuestionId(question) {
+    // Concatenate category, question text, and correct answer
+    const idString = `${question.category}_${question.question}_${question.correct_answer}`;
+    // Generate a hash from the concatenated string (for simplicity, using a simple hash function)
+    const hash = idString.split('').reduce((acc, char) => {
+        const charCode = char.charCodeAt(0);
+        return acc + charCode;
+    }, 0);
+    return hash.toString();
+}
+
+/**
  * Function to update the DOM with trivia questions
  * @param {array} questions - Array of trivia questions
  */
@@ -25,7 +41,16 @@ function updateDOM(questions) {
     container.innerHTML = ''; // Clear the previous content
     questions.forEach(question => {
         const questionCard = document.createElement('div');
-        questionCard.classList.add('bg-gray-200', 'p-4', 'rounded-lg');
+        questionCard.classList.add('bg-gray-200', 'p-4', 'rounded-lg', 'question-card'); // Add question-card class
+
+        // Generate unique question ID
+        const questionId = generateQuestionId(question);
+
+        // Create anchor tag
+        const questionLink = document.createElement('a');
+        questionLink.href = `/src/question.html?id=${questionId}`;
+        questionLink.style.textDecoration = 'none'; // Remove underline
+        questionLink.appendChild(questionCard);
 
         const questionText = document.createElement('p');
         questionText.textContent = decodeHTMLEntities(question.question);
@@ -61,7 +86,7 @@ function updateDOM(questions) {
         questionCard.appendChild(buttonContainer);
         questionCard.appendChild(answerText);
 
-        container.appendChild(questionCard);
+        container.appendChild(questionLink); // Append the anchor tag instead of questionCard
     });
 }
 
