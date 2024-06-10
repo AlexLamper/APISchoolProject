@@ -48,8 +48,10 @@ function updateDOM(questions) {
 
         // Create anchor tag
         const questionLink = document.createElement('a');
-        questionLink.href = `/src/question.html?id=${questionId}`;
-        questionLink.style.textDecoration = 'none'; // Remove underline
+        questionLink.href = '#';
+        questionLink.classList.add('question-link'); 
+        questionLink.dataset.questionId = questionId;
+        questionLink.style.textDecoration = 'none';
         questionLink.appendChild(questionCard);
 
         const questionText = document.createElement('p');
@@ -68,7 +70,7 @@ function updateDOM(questions) {
         falseButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'px-4', 'py-2', 'rounded');
 
         const answerText = document.createElement('div');
-        answerText.classList.add('mt-4', 'hidden');
+        answerText.classList.add('mt-6', 'hidden');
 
         // Event listeners to check answers
         trueButton.addEventListener('click', () => {
@@ -86,7 +88,7 @@ function updateDOM(questions) {
         questionCard.appendChild(buttonContainer);
         questionCard.appendChild(answerText);
 
-        container.appendChild(questionLink); // Append the anchor tag instead of questionCard
+        container.appendChild(questionLink);
     });
 }
 
@@ -196,4 +198,25 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (document.getElementById('categories-container')) {
         initCategories();
     }
+
+    // New link for random question
+    const randomQuestionLink = document.createElement('a');
+    const randomQuestionId = Math.floor(Math.random() * 100); // Generate random question ID
+    randomQuestionLink.href = `/src/question.html?id=${randomQuestionId}`; // Append the random question ID to the URL
+    randomQuestionLink.textContent = 'Random Question';
+    randomQuestionLink.classList.add('text-blue-500', 'hover:underline', 'ml-4', 'mt-12');
+    // document.querySelector('body').appendChild(randomQuestionLink);
+});
+
+
+// Script to handle question card clicks
+document.addEventListener('DOMContentLoaded', () => {
+    const questionLinks = document.querySelectorAll('.question-link');
+    questionLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default behavior of anchor tag
+            const questionId = link.dataset.questionId;
+            window.location.href = `/src/question.html?id=${questionId}`;
+        });
+    });
 });

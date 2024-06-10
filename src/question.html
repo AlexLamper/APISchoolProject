@@ -31,10 +31,8 @@
             margin: 0;
         }
     </style>
-    
 </head>
 <body class="bg-gray-100 p-8">
-
     <!-- Title, Subtitle and Navlink to Home Page -->
     <div class="flex justify-between items-center mb-8">
         <div>
@@ -49,6 +47,15 @@
         <!-- Question details will be inserted here dynamically -->
     </div>
 
+    <script>
+        // Check if the page has been refreshed
+        if (!sessionStorage.getItem('refreshed')) {
+            sessionStorage.setItem('refreshed', 'true');
+            window.location.reload();
+        } else {
+            sessionStorage.removeItem('refreshed');
+        }
+    </script>
     <script src="../assets/js/question.js" type="module"></script>
 </body>
 </html>
