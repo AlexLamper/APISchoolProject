@@ -22,7 +22,7 @@ function updateDOM(questions) {
         return;
     }
 
-    container.innerHTML = ''; // Clear previous content
+    container.innerHTML = ''; // Clear the previous content
     questions.forEach(question => {
         const questionCard = document.createElement('div');
         questionCard.classList.add('bg-gray-200', 'p-4', 'rounded-lg');
@@ -93,7 +93,7 @@ function updateCategoriesDOM(categories) {
         return;
     }
 
-    container.innerHTML = ''; // Clear previous content
+    container.innerHTML = ''; // Clear the previous content
     categories.forEach(category => {
         const categoryCard = document.createElement('div');
         categoryCard.classList.add('bg-gray-200', 'p-4', 'rounded-lg');
@@ -107,8 +107,6 @@ function updateCategoriesDOM(categories) {
         selectButton.classList.add('bg-blue-500', 'hover:bg-blue-600', 'text-white', 'px-4', 'py-2', 'rounded');
 
         selectButton.addEventListener('click', () => {
-            // Logic to handle category selection
-            // For example, redirect to a page with questions for the selected category
             window.location.href = `/src/index.html?category=${category.id}`;
         });
 
@@ -145,7 +143,7 @@ async function initQuestions() {
     
     // Get the category ID from the URL query parameters
     const params = new URLSearchParams(window.location.search);
-    const categoryId = params.get('category') || 9;  // Default to category 9 if none is specified
+    const categoryId = params.get('category') || 9;
     
     await fetchTriviaQuestions(categoryId);
 }
