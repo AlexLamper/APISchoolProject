@@ -1,6 +1,17 @@
 import { fetchData, fetchTriviaCategories } from './api.js';
 
 /**
+ * Function to decode HTML entities
+ * @param {string} html - String containing HTML entities
+ * @returns {string} - Decoded string
+ */
+function decodeHTMLEntities(html) {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = html;
+    return textarea.value;
+}
+
+/**
  * Function to update the DOM with trivia questions
  * @param {array} questions - Array of trivia questions
  */
@@ -17,7 +28,7 @@ function updateDOM(questions) {
         questionCard.classList.add('bg-gray-200', 'p-4', 'rounded-lg');
 
         const questionText = document.createElement('p');
-        questionText.textContent = question.question;
+        questionText.textContent = decodeHTMLEntities(question.question);
         questionText.classList.add('mb-4');
 
         const buttonContainer = document.createElement('div');
@@ -33,7 +44,6 @@ function updateDOM(questions) {
 
         const answerText = document.createElement('div');
         answerText.classList.add('mt-4', 'hidden');
-        answerText.textContent = 'Answer: ' + question.correct_answer;
 
         // Event listeners to check answers
         trueButton.addEventListener('click', () => {
