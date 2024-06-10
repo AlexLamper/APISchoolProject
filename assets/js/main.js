@@ -35,6 +35,15 @@ function updateDOM(questions) {
         answerText.classList.add('mt-4', 'hidden');
         answerText.textContent = 'Answer: ' + question.correct_answer;
 
+        // Event listeners to check answers
+        trueButton.addEventListener('click', () => {
+            checkAnswer('True', question.correct_answer, answerText);
+        });
+
+        falseButton.addEventListener('click', () => {
+            checkAnswer('False', question.correct_answer, answerText);
+        });
+
         buttonContainer.appendChild(trueButton);
         buttonContainer.appendChild(falseButton);
 
@@ -44,6 +53,23 @@ function updateDOM(questions) {
 
         container.appendChild(questionCard);
     });
+}
+
+/**
+ * Function to check the user's answer and display a message
+ * @param {string} userAnswer - The user's selected answer ("True" or "False")
+ * @param {string} correctAnswer - The correct answer from the API
+ * @param {HTMLElement} answerText - The element to display the result message
+ */
+function checkAnswer(userAnswer, correctAnswer, answerText) {
+    if (userAnswer === correctAnswer) {
+        answerText.textContent = 'Correct!';
+        answerText.classList.add('text-green-500');
+    } else {
+        answerText.textContent = "You're incorrect.";
+        answerText.classList.add('text-red-500');
+    }
+    answerText.classList.remove('hidden');
 }
 
 /**
