@@ -7,22 +7,27 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 p-4 sm:p-8">
-    <!-- Title, Subtitle and Navlink to Home Page -->
+
+    <!-- Title, Subtitle, Navlink to Home Page, and Random Question Link -->
     <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
         <div class="mb-4 sm:mb-0 text-center sm:text-left">
-            <h1 class="text-4xl font-bold">Random Question</h1>
-            <h2 class="text-xl text-gray-500">Trivia Questions Categories</h2>
+            <h1 class="text-4xl font-bold">QuestionaryX</h1>
+            <h2 class="text-xl text-gray-500">Trivia Questions</h2>
         </div>
-        <a href="/src/index.html" class="text-blue-500 hover:underline">Home</a>
+        <div>
+            <a href="/src/index.html" class="text-blue-500 hover:underline mr-4 sm:mr-8">Home</a>
+            <a href="/src/categories.html" class="text-blue-500 hover:underline">Category</a>
+        </div>
     </div>
 
     <!-- Question Details and Info -->
-    <div id="question-details" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Question details will be inserted here dynamically -->
+    <div id="question-details" class="flex flex-col lg:flex-row gap-4">
+        <!-- Question content will go here -->
         <div class="bg-gray-100 rounded-lg p-4">
             <!-- Question content will go here -->
         </div>
-        <div class="bg-gray-100 rounded-lg p-4">
+        <!-- Question info will go here -->
+        <div class="bg-gray-100 rounded-lg p-4 mt-4 lg:mt-0">
             <!-- Question info will go here -->
         </div>
     </div>
