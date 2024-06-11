@@ -7,11 +7,11 @@
     <link href="./output.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 p-8">
+<body class="bg-gray-100 p-4 sm:p-8">
 
     <!-- Title, Subtitle and Navlink to Home Page -->
-    <div class="flex justify-between items-center mb-8">
-        <div>
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <div class="mb-4 sm:mb-0 text-center sm:text-left">
             <h1 class="text-4xl font-bold">Categories</h1>
             <h2 class="text-xl text-gray-500">Trivia Questions Categories</h2>
         </div>
@@ -19,7 +19,7 @@
     </div>
 
     <!-- Categories Section -->
-    <div class="grid grid-cols-3 gap-8" id="categories-container">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8" id="categories-container">
         <!-- Categories get inserted here dynamically -->
     </div>
 

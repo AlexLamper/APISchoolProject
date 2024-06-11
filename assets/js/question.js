@@ -28,26 +28,23 @@ function displayQuestionDetails(question) {
         return;
     }
 
-    // Build HTML to display question details
+    // Build HTML to display question details and info
     const html = `
-        <div style="display: flex; justify-content: space-between;">
-            <div style="width: 65%; padding-right: 20px;">
-                <div style="background-color: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 1rem;">
-                    <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Question:</h2>
-                    <p>${question.question}</p>
-                    <div style="margin-top: 2rem;">
-                        <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Answer:</h2>
-                        <p>${question.correct_answer}</p>
-                    </div>
-                </div>
+        <div class="p-4">
+            <h2 class="text-2xl font-bold mb-2">Question:</h2>
+            <p class="text-lg">${question.question}</p>
+            <h2 class="text-2xl font-bold mt-4 mb-2">Answer:</h2>
+            <p class="text-lg">${question.correct_answer}</p>
+        </div>
+        <div class="grid grid-cols-1 gap-4">
+            <div class="bg-gray-200 rounded-2xl p-6">
+                <h2 class="text-xl"><span class="font-bold">Category: </span><span class="font-normal">${question.category}</span></h2>
             </div>
-            <div style="width: 30%;">
-                <div style="background-color: #E5E7EB; border-radius: 0.5rem; padding: 1rem;">
-                    <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Question Details:</h2>
-                    <div style="font-weight: bold;">Category: ${question.category}</div>
-                    <div style="font-weight: bold;">Difficulty: ${question.difficulty}</div>
-                    <div style="font-weight: bold;">Type: ${question.type}</div>
-                </div>
+            <div class="bg-gray-200 rounded-2xl p-6">
+                <h2 class="text-xl"><span class="font-bold">Difficulty: </span><span class="font-normal">${question.difficulty}</span></h2>
+            </div>
+            <div class="bg-gray-200 rounded-2xl p-6">
+                <h2 class="text-xl"><span class="font-bold">Type: </span><span class="font-normal">${question.type}</span></h2>
             </div>
         </div>
     `;
